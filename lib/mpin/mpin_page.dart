@@ -7,6 +7,7 @@ class MPinPage extends StatefulWidget {
 }
 
 class _MPinPageState extends State<MPinPage> {
+  final mPinAnimController = MPinAnimController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,22 @@ class _MPinPageState extends State<MPinPage> {
           ),
           //Animated pin
           Center(
-            child: MPinAnim(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                MPinAnim(
+                  animController: mPinAnimController,
+                ),
+                SizedBox(height: 32),
+                MaterialButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    mPinAnimController.animate('1');
+                  },
+                  child: Text('1'),
+                ),
+              ],
+            ),
           ),
         ],
       ),
